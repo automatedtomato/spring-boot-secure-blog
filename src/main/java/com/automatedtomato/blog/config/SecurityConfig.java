@@ -16,9 +16,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.automatedtomato.blog.domain.entities.User;
 import com.automatedtomato.blog.repositories.UserRepository;
+import com.automatedtomato.blog.security.BlogUserDetailsService;
 import com.automatedtomato.blog.security.JwtAuthenticationFilter;
 import com.automatedtomato.blog.services.AuthenticationService;
-import com.automatedtomato.blog.services.impl.BlogUserDetailsService;
 
 @Configuration
 @EnableWebSecurity

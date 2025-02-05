@@ -1,4 +1,4 @@
-package com.automatedtomato.blog.services.impl;
+package com.automatedtomato.blog.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.automatedtomato.blog.domain.entities.User;
 import com.automatedtomato.blog.repositories.UserRepository;
-import com.automatedtomato.blog.security.BlogUserDetails;
 
 import lombok.RequiredArgsConstructor;
 
