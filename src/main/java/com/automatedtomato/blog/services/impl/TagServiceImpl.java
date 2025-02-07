@@ -14,6 +14,7 @@ import com.automatedtomato.blog.domain.entities.Tag;
 import com.automatedtomato.blog.repositories.TagRepository;
 import com.automatedtomato.blog.services.TagService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -62,5 +63,20 @@ public class TagServiceImpl implements TagService{
             }
             tagRepository.delete(tag);
     });
+    }
+
+    @Override
+    public Tag getTagById(UUID id) {
+        return tagRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Tag does not exist with id: " + id));
+    }
+
+    @Override
+    public List<Tag> getTagByIds(Set<UUID> ids) {
+        List<Tag> foundTags = tagRepository.findAllById(ids);
+        if (foundTags.size() != ids.size()) {
+            throw new IllegalArgumentException("Post does not exist with id: " + ids);
+        }
+        return foundTags;
     }
 }

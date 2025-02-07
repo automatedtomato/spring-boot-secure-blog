@@ -11,6 +11,7 @@ import com.automatedtomato.blog.domain.entities.Category;
 import com.automatedtomato.blog.repositories.CategoryRepository;
 import com.automatedtomato.blog.services.CategoryService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -43,5 +44,11 @@ public class CategoryServiceImpl implements CategoryService {
             }
             categoryRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public Category getCategoryById(UUID id) {
+        return categoryRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Category does not exist with id: " + id));
     }
 }
